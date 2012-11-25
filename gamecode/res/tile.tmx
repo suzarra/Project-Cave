@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="28" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="PrtCave" tilewidth="16" tileheight="16">
+  <image source="PrtCave.png" width="256" height="80"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="28">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2YQQrAIAwE85u2+IDW/3+sOXqpqJB012Rgr5IhiYhFRMomYSeSx6E5NZd9OcuMeNyaR1Pty1lmxINhPyPtBwNWHt6zmP3AIj2+z/rjfs5+YJEeWMx6oL61ovYDlZ4H6gzNejCxqwfTLPU8WGH2aP9xmD3afxyPffDKC/b6N43gFQAA
+  </data>
+ </layer>
+</map>

@@ -7,12 +7,14 @@ var g_ressources = [
     {type:"image", src:s_HelloWorld},
     {type:"image", src:s_CloseNormal},
     {type:"image", src:s_CloseSelected},
-	{type:"image", src:s_pathBlock}
+	{type:"image", src:s_pathBlock},
+    {type: "image", src: "res/PrtCave.png"},
     //plist
 
     //fnt
 
     //tmx
+    {type: "tmx", src: "res/tile.tmx"}
 
     //bgm
 
