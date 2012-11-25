@@ -19,9 +19,7 @@ var TestScene = cc.Scene.extend({
 
     },
     MainMenuCallback:function () {
-        var scene = cc.Scene.create();
-        var layer = new TestController();
-        scene.addChild(layer);
+        var scene = new MyScene();
         cc.Director.getInstance().replaceScene(scene);
     }
 });
@@ -31,6 +29,7 @@ var MyLayer = cc.Layer.extend({
     helloLabel:null,
     circle:null,
     sprite:null,
+                              z:0,
 
     init:function () {
         this._super();
@@ -49,18 +48,35 @@ var MyLayer = cc.Layer.extend({
         );
         
         closeItem.setAnchorPoint(cc.p(0.5, 0.5));
+                         
+        var startLabel = cc.LabelTTF.create("Start", "Arial", 38);
+                              
+        var start = cc.MenuItemLabel.create(
+            startLabel,
+            this,
+            function () {
+                var box =new Box2DTestScene();
+                box.runThisTest();
+            }
+        );
 
-        var menu = cc.Menu.create(closeItem, null);
+        var menu = cc.Menu.create(closeItem, start, null);
         menu.setPosition(cc.PointZero());
         this.addChild(menu, 1);
+        start.setPosition(cc.p(size.width/2, 120));
         closeItem.setPosition(cc.p(size.width - 20, 20));
 
-        this.helloLabel = cc.LabelTTF.create("Press the Power Button", "Arial", 38);
+        this.helloLabel = cc.LabelTTF.create("Project Cave", "Arial", 38);
         this.helloLabel.setPosition(cc.p(size.width / 2, size.height - 40));
         this.addChild(this.helloLabel, 5);
 
         var lazyLayer = new cc.LazyLayer();
         this.addChild(lazyLayer);
+                              
+                              
+        this.map = cc.TMXTiledMap.create("res/tile.tmx");
+        this.map.setAnchorPoint(cc.p(0, 0));
+        lazyLayer.addChild(this.map, 0);
 /*
 		
         this.sprite = cc.Sprite.create("res/Pony_Pinky.png");
@@ -79,8 +95,14 @@ var MyLayer = cc.Layer.extend({
 		var actionBy2 = cc.ScaleBy.create(2, 0.25, 4.5);
 
         this.sprite.runAction(actionBy2);
+    },
+    update:function (dt) {
+        this.z += dt;
+                              
+                              this.map.setScale(this.z);
+                              console.log(this.z);
+                        
     }
-
 
 });
 
@@ -90,6 +112,6 @@ var MyScene = cc.Scene.extend({
         var layer = new MyLayer();
         this.addChild(layer);
         layer.init();
-      //  layer.scale();
+       // layer.scheduleUpdate();
     }
 });
